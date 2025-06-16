@@ -32,7 +32,7 @@ const ViewProject = () => {
 
   return (
     <>
-      <NavBar />
+      
       <Container className="my-5">
         <h3 className="mb-4">My Projects</h3>
         {projects.length === 0 && <p>No projects found.</p>}
