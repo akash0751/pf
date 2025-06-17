@@ -1,39 +1,46 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { jwtDecode } from 'jwt-decode';
 import { Card, Container } from 'react-bootstrap';
  // Assuming you have a navbar component
 
 const ViewProject = () => {
   const [projects, setProjects] = useState([]);
-
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NTAwYjk5ZTc3OWUzM2EwMGUyNWE1YSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzUwMDgxMDYyLCJleHAiOjE3NTAwODQ2NjJ9.WRis0USsDhBlUvWHZSRe_R-rkNc77hXGVVeOJwXwG20';
-  const decoded = token ? jwtDecode(token) : null;
-  const userId = decoded?.id;
+  const [loading, setLoading] = useState(true);
+  const apiKey = '237b5d49ddf0eebcbc17a5a959f640a6ebaa081819198ceeef24423cd38f3512';
+  
 
   const fetchProjects = async () => {
+    setLoading(true); 
     try {
       const res = await axios.get('https://subpf-1.onrender.com/api/get', {
-        headers: { "authorization": `Bearer ${token}` },
+        headers: {'x-api-key': apiKey },
         withCredentials: true
       });
-      const userProjects = res.data.project.filter(project => project.user === userId);
-      setProjects(userProjects);
+      
+      setProjects(res.data.project);
     } catch (err) {
       console.error(err);
-    }
+    }finally {
+    setLoading(false); // Stop loading
+  }
   };
 
   useEffect(() => {
-    if (userId) {
+    if (apiKey) {
       fetchProjects();
     }
-  }, [userId]);
+  }, [apiKey]);
 
   return (
     <>
-      
-      <Container className="my-5">
+      {loading ? (
+  <div className="text-center py-5">
+    <span className="spinner-border text-primary" role="status" />
+    <p className="mt-2">Loading your projects...</p>
+  </div>
+) : (
+  <>
+    <Container className="my-5">
         <h3 className="mb-4">My Projects</h3>
         {projects.length === 0 && <p>No projects found.</p>}
         {projects.map(project => (
@@ -46,6 +53,9 @@ const ViewProject = () => {
           </Card>
         ))}
       </Container>
+    </>
+  
+)}
     </>
   );
 };
