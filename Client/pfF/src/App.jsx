@@ -53,8 +53,8 @@ const Home = () => {
         <h1 className="mt-2">Welcome to My Portfolio</h1>
         <p className="lead">I'm Akash, a Full Stack Developer passionate about web technologies.</p>
         <a
-          href="/resume.pdf"
-          download = "download.pdf"
+          href="/resume.jpg"
+          download = "download.jpg"
           className="btn btn-primary mt-3"
         >
           Download Resume
