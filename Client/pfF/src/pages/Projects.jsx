@@ -48,7 +48,7 @@ const ViewProject = () => {
             <h5>{project.title}</h5>
             <p>{project.description}</p>
             <p><strong>Tools:</strong> {project.tools}</p>
-            <a href={project.sourceCode} target="_blank" rel="noreferrer">Source</a> |{' '}
+            <a href={project.sourceCode} target="_blank" rel="noreferrer">Source</a> {' '}<br></br>
             <a href={project.hostLink} target="_blank" rel="noreferrer">Live</a>
           </Card>
         ))}

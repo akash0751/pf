@@ -10,12 +10,15 @@ import Skills from "./pages/Skills";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 
+
 const useScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [pathname]);
 };
+
+
 
 const PageTransition = ({ children }) => {
   return <div className="page-transition animate__animated animate__fadeIn">{children}</div>;
@@ -50,8 +53,8 @@ const Home = () => {
         <h1 className="mt-2">Welcome to My Portfolio</h1>
         <p className="lead">I'm Akash, a Full Stack Developer passionate about web technologies.</p>
         <a
-          href="/assets/Akash_Resume.pdf"
-          download
+          href="/resume.pdf"
+          download = "download.pdf"
           className="btn btn-primary mt-3"
         >
           Download Resume
