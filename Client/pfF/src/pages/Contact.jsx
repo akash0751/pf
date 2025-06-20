@@ -21,8 +21,8 @@ const Contact = () => {
       <div className="container">
         <h2 className="mt-4">Contact</h2>
         <p>Email: akashsofficial05@gmail.com</p>
-        <p>LinkedIn: linkedin.com/in/akash</p>
-        <p>GitHub: github.com/akash0751</p>
+        <p>LinkedIn: https://www.linkedin.com/in/akash-s--</p>
+        <p>GitHub: https://www.github.com/akash0751</p>
 
         <h4 className="mt-5">Feedback Form</h4>
         {submitted && <div className="alert alert-success">Thank you for your feedback!</div>}
